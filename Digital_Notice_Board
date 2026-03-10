@@ -1,0 +1,13 @@
+# Digital Notice Board System
+
+This project is a Python-based Digital Notice Board.
+
+Features:
+- Add Notice
+- View Notice
+- Search Notice
+- Update Notice
+- Delete Notice
+
+Technology Used:
+Python, JSON

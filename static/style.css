@@ -1,0 +1,392 @@
+/* ===============================
+   GOOGLE FONT
+=================================*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ===============================
+   GLOBAL RESET
+=================================*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(-45deg, #4e73df, #1cc88a, #36b9cc, #764ba2);
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+    overflow-x: hidden;
+}
+
+/* Animated Background */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Floating Glow Effects */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    filter: blur(90px);
+    z-index: 0;
+    animation: float 8s infinite ease-in-out alternate;
+}
+
+body::before { top: -100px; left: -100px; }
+body::after { bottom: -100px; right: -100px; }
+
+@keyframes float {
+    from { transform: translateY(0px); }
+    to { transform: translateY(40px); }
+}
+
+/* ===============================
+   DASHBOARD LAYOUT
+=================================*/
+.dashboard {
+    display: flex;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===============================
+   SIDEBAR (GLASS STYLE)
+=================================*/
+.sidebar {
+    width: 260px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: rgba(17, 24, 39, 0.7);
+    backdrop-filter: blur(15px);
+    color: white;
+    box-shadow: 5px 0 25px rgba(0,0,0,0.2);
+}
+
+/* ===============================
+   TOP PROFILE (NEW)
+=================================*/
+.top-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    margin-bottom: 25px;
+    padding: 8px;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+
+.top-profile:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.top-profile img {
+    width: 40px;
+    border-radius: 50%;
+    border: 2px solid #1cc88a;
+}
+
+/* Logo */
+.logo {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+/* Menu */
+.menu {
+    list-style: none;
+}
+
+.menu li {
+    padding: 14px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+
+.menu li:hover,
+.menu li.active {
+    background: linear-gradient(90deg,#4e73df,#1cc88a);
+    transform: translateX(5px);
+}
+
+/* ===============================
+   MAIN CONTENT
+=================================*/
+.main {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+/* Header with typing effect */
+.header h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid white;
+    width: 0;
+    animation: typing 3s steps(30, end) forwards,
+               blink 0.8s infinite;
+    color: white;
+}
+
+@keyframes typing { to { width: 100%; } }
+@keyframes blink { 50% { border-color: transparent; } }
+
+/* ===============================
+   TOOL CARDS (GLASS)
+=================================*/
+.tool-section {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    color: white;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hidden {
+    display: none;
+}
+
+/* ===============================
+   TEXT AREA SECTION
+=================================*/
+.text-area-container {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+textarea {
+    flex: 1;
+    height: 220px;
+    padding: 18px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+textarea:focus {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(255,255,255,0.6);
+}
+
+/* ===============================
+   BUTTON
+=================================*/
+button {
+    padding: 12px 30px;
+    border-radius: 40px;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    background: white;
+    color: #4e73df;
+    transition: 0.3s ease;
+}
+
+button:hover { transform: translateY(-3px); }
+button:active { transform: scale(0.95); }
+
+/* ===============================
+   RESULT + PROGRESS
+=================================*/
+.result {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.2);
+    font-size: 20px;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: 0.5s ease;
+}
+
+.result.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.progress-container {
+    margin-top: 15px;
+    width: 100%;
+    height: 18px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    border-radius: 50px;
+    transition: width 1s ease;
+}
+
+.low { background: linear-gradient(90deg,#1cc88a,#17a673); }
+.medium { background: linear-gradient(90deg,#f6c23e,#dda20a); }
+.high { background: linear-gradient(90deg,#e74a3b,#c0392b); }
+
+/* ===============================
+   PROFILE EDIT TOOL
+=================================*/
+
+.profile-edit {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-top: 20px;
+
+}
+
+
+/* Labels */
+
+.profile-edit label {
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    color: #fff;
+
+}
+
+
+/* Input Fields */
+
+.profile-edit input {
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    border: none;
+
+    outline: none;
+
+    background: rgba(255,255,255,0.2);
+
+    color: white;
+
+    font-size: 14px;
+
+    transition: 0.3s ease;
+
+}
+
+
+/* Input Focus Effect */
+
+.profile-edit input:focus {
+
+    background: rgba(255,255,255,0.3);
+
+    box-shadow: 0 0 10px rgba(255,255,255,0.6);
+
+    transform: scale(1.02);
+
+}
+
+
+/* Save Button */
+
+.profile-edit button {
+
+    margin-top: 10px;
+
+    padding: 12px;
+
+    border-radius: 25px;
+
+    border: none;
+
+    font-weight: 600;
+
+    background: linear-gradient(90deg,#1cc88a,#36b9cc);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+
+}
+
+
+/* Button Hover */
+
+.profile-edit button:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+
+}
+
+
+/* Success Message */
+
+#profileMessage {
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    background: rgba(0,0,0,0.2);
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+    animation: fadeIn 0.5s ease;
+
+}
+
+
+/* Profile Tool Container */
+
+#profileTool {
+
+    max-width: 450px;
+
+    margin: auto;
+
+}
